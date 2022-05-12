@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seite des inoffiziellen Twitter ExpinT-Bot</title>
+  </head>
+  <style>
+    :root {
+      --color-main: 224, 43, 33;
+      --color-grey: 245, 245, 245;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      min-height: 100vh;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    main {
+      max-width: 640px;
+      background-color: rgb(var(--color-grey));
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 100;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+    }
+
+    a {
+      text-underline-offset: 0.15rem;
+      color: rgb(var(--color-main));
+    }
+
+    .twitter-timeline {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    footer ul {
+      display: block;
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+
+    footer li {
+      display: block;
+    }
+
+    footer li:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    footer li:not(:last-child)::after {
+      content: "|";
+      margin: 0 0.175rem;
+      font-size: 1.25rem;
+      vertical-align: middle;
+    }
+
+    @media screen and (min-width: 768px) {
+      body {
+        padding: 3rem;
+      }
+      main {
+        padding: 2rem;
+      }
+      footer ul {
+        display: inline;
+      }
+      footer li {
+        display: inline;
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Hoppla, hier gibt's eigentlich nicht viel zu sehen.</h1>
+      <p>
+        Diese Seite gehört zum nicht kommerziellen und inoffiziellen Twitter
+        ExpinT-Bot, welcher dich jede Woche, an die neue Folge
+        <a
+          href="https://www.ndr.de/fernsehen/sendungen/expeditionen_ins_tierreich/index.html"
+          target="_blank"
+          >"Expeditionen ins Tierreich"</a
+        >, erinnert.
+      </p>
+      <a
+        class="twitter-timeline"
+        data-lang="de"
+        data-height="600"
+        data-dnt="true"
+        href="https://twitter.com/_ExpinT_?ref_src=twsrc%5Etfw"
+        >Tweets by _ExpinT_</a
+      >
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+    </main>
+    <footer>
+      &#169; durch
+      <ul>
+        <li>
+          <a href="https://twitter.com/abrajakabra" target="_blank"
+            >@AbraJaKaBra</a
+          >
+          auf Twitter
+        </li>
+        <li>
+          <a href="https://github.com/abrajakabra/expint-bot" target="_blank"
+            >abrajakabra</a
+          >
+          auf Github
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>
