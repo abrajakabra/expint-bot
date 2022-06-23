@@ -1,0 +1,2 @@
+[functions."expint-after-follow"]
+schedule = "30 21 * * 3"
