@@ -1,2 +1,8 @@
 [functions."expint-after-follow"]
 schedule = "30 21 * * 3"
+
+[functions."expint-announcement"]
+schedule = "0 7 * * 3"
+
+[functions."expint-announcement-retweet"]
+schedule = "0 10,13,16 * * 3"
