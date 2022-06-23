@@ -1,7 +1,7 @@
 const { schedule } = require("@netlify/functions");
 const { TwitterApi } = require("twitter-api-v2");
 
-module.exports.handler = schedule("0 10,13,16 * * 3", async (event) => {
+module.exports.handler = async (event) => {
   const client = new TwitterApi({
     appKey: process.env.TWITTER_APP_KEY,
     appSecret: process.env.TWITTER_APP_SECRET,
@@ -38,4 +38,4 @@ module.exports.handler = schedule("0 10,13,16 * * 3", async (event) => {
   return {
     statusCode: 200,
   };
-});
+};
