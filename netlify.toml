@@ -1,5 +1,5 @@
 [functions."expint-after-follow"]
-schedule = "30 21 * * 3"
+schedule = "55 21 * * 3"
 
 [functions."expint-announcement"]
 schedule = "0 7 * * 3"
