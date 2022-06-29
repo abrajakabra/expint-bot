@@ -30,7 +30,7 @@ module.exports.handler = async (event) => {
 
       const latestExpintTweets = await expintRequest.fetchLast(1000);
 
-      Array.from(latestExpintTweets.data.data).forEach((tweet) => {
+      Array.from(latestExpintTweets.data.data).forEach(async (tweet) => {
         if (!followersArray.includes(tweet.author_id)) {
           await client.v2.follow(meId, tweet.author_id);
         }
