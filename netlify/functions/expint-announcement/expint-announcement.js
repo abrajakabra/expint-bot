@@ -1,9 +1,8 @@
-const { schedule } = require("@netlify/functions");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { TwitterApi } = require("twitter-api-v2");
 
-module.exports.handler = schedule("0 9 * * 3", async (event) => {
+module.exports.handler = async (event) => {
   const currentDate = new Date();
   const programUrl = `https://www.ndr.de/fernsehen/programm/epg104_display-all_date-${currentDate
     .toISOString()
@@ -61,4 +60,4 @@ module.exports.handler = schedule("0 9 * * 3", async (event) => {
   return {
     statusCode: 200,
   };
-});
+};

@@ -1,4 +1,3 @@
-const { schedule } = require("@netlify/functions");
 const { TwitterApi } = require("twitter-api-v2");
 
 module.exports.handler = async (event) => {
