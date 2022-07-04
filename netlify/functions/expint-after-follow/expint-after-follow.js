@@ -1,7 +1,7 @@
 const { schedule } = require("@netlify/functions");
 const { TwitterApi } = require("twitter-api-v2");
 
-module.exports.handler = schedule("30 23 * * 3", async (event) => {
+module.exports.handler = async (event) => {
   const client = new TwitterApi({
     appKey: process.env.TWITTER_APP_KEY,
     appSecret: process.env.TWITTER_APP_SECRET,
@@ -19,20 +19,37 @@ module.exports.handler = schedule("30 23 * * 3", async (event) => {
     const lastTweet = tweetsOfMe.data.data[0];
 
     if (lastTweet.text.indexOf("Mittwoch ist #ExpinT-Tag!") > -1) {
-      const followersOfMe = await client.v2.followers(meId);
-      const followersArray = followersOfMe.data?.map((follower) => {
-        return follower.id;
+      const followingsOfMe = await client.v2.following(meId, {
+        asPaginator: true,
       });
+
+      while (!followingsOfMe.done) {
+        await followingsOfMe.fetchNext();
+      }
+
+      const followingsArray = [];
+
+      for (const following of followingsOfMe) {
+        followingsArray.push(following.id);
+      }
 
       const expintRequest = await client.v2.search("#expint", {
         expansions: ["author_id"],
       });
 
       const latestExpintTweets = await expintRequest.fetchLast(1000);
+      const latestExpintTweetsUsers = latestExpintTweets.data.data.map(
+        (tweet) => {
+          return tweet.author_id;
+        }
+      );
 
-      Array.from(latestExpintTweets.data.data).forEach((tweet) => {
-        if (!followersArray.includes(tweet.author_id)) {
-          await client.v2.follow(meId, tweet.author_id);
+      let latestExpintTweetsUsersUnique = [...new Set(latestExpintTweetsUsers)];
+
+      latestExpintTweetsUsersUnique.forEach((tweetUserId) => {
+        if (!followingsArray.includes(tweetUserId)) {
+          console.log("Follow: ", tweetUserId);
+          await client.v2.follow(meId, tweetUserId);
         }
       });
     } else {
@@ -52,4 +69,4 @@ module.exports.handler = schedule("30 23 * * 3", async (event) => {
   return {
     statusCode: 200,
   };
-});
+};
