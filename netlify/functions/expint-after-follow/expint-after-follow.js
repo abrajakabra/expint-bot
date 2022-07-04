@@ -29,6 +29,8 @@ module.exports.handler = async (event) => {
       });
 
       const latestExpintTweets = await expintRequest.fetchLast(1000);
+      
+      console.log("followersArray", followersArray);
 
       Array.from(latestExpintTweets.data.data).forEach(async (tweet) => {
         console.log("Expint Tweet: ", tweet);
