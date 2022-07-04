@@ -45,7 +45,7 @@ module.exports.handler = async (event) => {
 
       let latestExpintTweetsUsersUnique = [...new Set(latestExpintTweetsUsers)];
 
-      latestExpintTweetsUsersUnique.forEach((tweetUserId) => {
+      latestExpintTweetsUsersUnique.forEach(async (tweetUserId) => {
         if (!followingsArray.includes(tweetUserId)) {
           console.log("Follow: ", tweetUserId);
           await client.v2.follow(meId, tweetUserId);
