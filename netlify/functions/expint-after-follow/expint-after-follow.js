@@ -45,12 +45,17 @@ module.exports.handler = async (event) => {
 
       let latestExpintTweetsUsersUnique = [...new Set(latestExpintTweetsUsers)];
 
-      latestExpintTweetsUsersUnique.forEach(async (tweetUserId) => {
-        if (!followingsArray.includes(tweetUserId)) {
-          console.log("Follow: ", tweetUserId);
+      for (
+        let index = 0;
+        index < latestExpintTweetsUsersUnique.length;
+        index++
+      ) {
+        const tweetUserId = latestExpintTweetsUsersUnique[index];
+
+        if (!followingsArray.includes(tweetUserId) && tweetUserId !== meId) {
           await client.v2.follow(meId, tweetUserId);
         }
-      });
+      }
     } else {
       console.log("No new episode, no new followers.");
       return {
